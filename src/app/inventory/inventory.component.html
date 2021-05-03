@@ -1,0 +1,33 @@
+<div>
+    <section class="section">
+        <div class="container">
+            <form (ngSubmit)="submitForm()" #textForm="ngForm">
+                <!-- -->
+                <div class="field">
+                    <label class="label">Dealer Branch Name</label>
+                    <input type="text" name="text" class="input" [(ngModel)]="text" #textInput="ngModel" required>
+                    <div class="help is-error" *ngIf="textInput.invalid && textInput.touched">input is required.</div>
+                </div>
+                <div>
+                    <select [(ngModel)]="selectedValue">
+                        <option *ngFor="let d of dealers" [ngValue]="d">{{d}}</option>
+                    </select>
+                </div>
+
+                <!-- submit button to get the list of words -->
+                <button type="load"
+                        class="button is-medium is-primary"
+                        [disabled]="textForm.invalid">
+                    Submit
+                </button>
+
+                <div class="field" *ngIf="found">
+                    <label class="label">
+                        Cars
+                    </label>
+                    <textarea name="words" class="textarea" [(ngModel)]="cars"></textarea>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
